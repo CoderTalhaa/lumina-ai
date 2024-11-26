@@ -13,10 +13,10 @@ import Section3 from "@/components/ui/Section3";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
-  useLayoutEffect(() => {
-    const gradient = new Gradient();
-    gradient.initGradient("#gradient-canvas");
-  }, []);
+  // useLayoutEffect(() => {
+  //   const gradient = new Gradient();
+  //   gradient.initGradient("#gradient-canvas");
+  // }, []);
 
   useEffect(() => {
     const lenis = new Lenis({});
@@ -53,16 +53,16 @@ export default function Home() {
         {isLoading && <LoadingScreen setIsLoading={setIsLoading} />}
       </AnimatePresence>
       <main className="relative ">
-        <canvas id="gradient-canvas" data-transition-in />
+        {/* <canvas id="gradient-canvas" data-transition-in /> */}
 
         <div className="relative h-screen ">
-          <Scene />
+          {/* <Scene /> */}
           <Section1 />
         </div>
 
-        <Section2 />
+        {/* <Section2 /> */}
 
-        <Section3 />
+        {/* <Section3 /> */}
       </main>
     </>
   );

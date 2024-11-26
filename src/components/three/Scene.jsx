@@ -3,7 +3,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useMotionValue } from "framer-motion";
 import { motion } from "framer-motion-3d";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Model } from "./experience/Model";
 
 export default function Scene() {
@@ -50,15 +50,17 @@ export default function Scene() {
       eventSource={eventSource}
     >
       {/* <color attach="background" args={["#353535"]} /> */}
-      <fog attach="fog" args={["#353535", 5, 20]} />
+      <fog attach="fog" args={["#353535", 5, 25]} />
 
-      <motion.group rotation-x={mouse.y} rotation-y={mouse.x}>
-        <Model position={[0, -3, 0]} />
-      </motion.group>
+      <Suspense fallback={null}>
+        <motion.group rotation-x={mouse.y} rotation-y={mouse.x}>
+          <Model position={[0, -3, 0]} />
+        </motion.group>
+        <Environment preset="studio" />
+      </Suspense>
 
       {/* <OrbitControls /> */}
       <ambientLight intensity={1} />
-      <Environment preset="studio" />
     </Canvas>
   );
 }

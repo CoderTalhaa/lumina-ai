@@ -5,9 +5,17 @@ import { useMotionValue } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Model } from "./experience/Model";
+import {
+  Bloom,
+  EffectComposer,
+  ToneMapping,
+} from "@react-three/postprocessing";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Scene() {
   const [eventSource, setEventSource] = useState(null);
+
+  const isMobile = useMediaQuery("(max-width: 768px)", false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof document !== "undefined") {
@@ -46,19 +54,28 @@ export default function Scene() {
       gl={{ antialias: true }}
       camera={{ position: [0, 0, 15], fov: 30 }}
       eventSource={eventSource}
+      className="canvas"
     >
       {/* <color attach="background" args={["#353535"]} /> */}
-      <fog attach="fog" args={["#353535", 5, 25]} />
 
       <Suspense fallback={null}>
-        <motion.group rotation-x={mouse.y} rotation-y={mouse.x}>
-          <Model position={[0, -3, 0]} />
+        <motion.group
+          rotation-x={mouse.y}
+          rotation-y={mouse.x}
+          position={[isMobile ? 0 : 2, 0, 0]}
+        >
+          <Model position={[0, -2, 0]} />
         </motion.group>
         <Environment preset="studio" />
       </Suspense>
 
       {/* <OrbitControls /> */}
       <ambientLight intensity={1} />
+
+      {/* <EffectComposer disableNormalPass>
+        <Bloom mipmapBlur luminanceThreshold={0} intensity={0.3} />
+        <ToneMapping />
+      </EffectComposer> */}
     </Canvas>
   );
 }

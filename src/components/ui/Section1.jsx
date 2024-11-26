@@ -31,30 +31,32 @@ export default function Section1() {
     },
   ];
   return (
-    <div className=" relative container  flex flex-col items-center">
-      <h1 className="mt-3 mb-2 text-2xl font-secondary z-20">
+    <div className=" relative h-full  wrap flex flex-col items-center">
+      <h1 className="mt-3 mb-2 lg:text-2xl font-secondary text-center">
         RECENT CONVERSATIONS
       </h1>
 
-      <div className="relative space-y-2 w-full  max-w-[800px]">
-        {conversations.map((convo, i) => (
-          <motion.div
-            whileHover={{
-              scale: 1.1,
-              transition: { duration: 0.3, ease: "easeInOut" },
-            }}
-            key={i}
-            className=" flex flex-col lg:flex-row flex-wrap items-start rounded bg-zinc-800/50 p-4  lg:gap-20 gap-3 bg-gray-500 bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 cursor-pointer"
-          >
-            <div className="flex flex-col text-sm text-zinc-400 ">
-              <p>CHAT {convo.date}</p>
-              <p>{convo.time}</p>
-            </div>
-            <div className="text-lg font-circular-web text-zinc-200 ">
-              {convo.message}
-            </div>
-          </motion.div>
-        ))}
+      <div className="relative w-full max-w-[800px] flex-grow ">
+        <div className="space-y-2 p-2">
+          {conversations.map((convo, i) => (
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.3, ease: "easeInOut" },
+              }}
+              key={i}
+              className=" flex flex-col lg:flex-row flex-wrap p-3 items-start rounded bg-zinc-800/50 lg:gap-20 gap-3 bg-gray-500 bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 cursor-pointer"
+            >
+              <div className="flex flex-col text-sm text-zinc-400 ">
+                <p>CHAT {convo.date}</p>
+                <p>{convo.time}</p>
+              </div>
+              <div className="text-lg font-circular-web text-zinc-200 ">
+                {convo.message}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

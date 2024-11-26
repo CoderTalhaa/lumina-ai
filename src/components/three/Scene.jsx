@@ -34,8 +34,6 @@ export default function Scene() {
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
 
-    console.log(mouse.x, mouse.y);
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };

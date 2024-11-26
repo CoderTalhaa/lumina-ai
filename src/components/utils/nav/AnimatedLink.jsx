@@ -7,7 +7,7 @@ export default function AnimatedLink({ title }) {
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative  cursor-pointer overflow-hidden"
+      className="relative cursor-pointer overflow-hidden"
     >
       <AnimatedWord
         title={title}

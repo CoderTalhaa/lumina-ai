@@ -1,10 +1,15 @@
 "use client";
-import { useProgress } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function LoadingScreen({ setIsLoading }) {
-  const { progress, active } = useProgress();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 6000);
+
+    return () => clearTimeout(timer);
+  }, [setIsLoading]);
 
   const slideUp = {
     initial: { y: "0" },
@@ -14,12 +19,6 @@ export default function LoadingScreen({ setIsLoading }) {
       transition: { ease: [0.76, 0, 0.24, 1], duration: 0.8, delay: 0.2 },
     },
   };
-
-  useEffect(() => {
-    if (active) {
-      setIsLoading(false);
-    }
-  }, [active]);
 
   return (
     <motion.div

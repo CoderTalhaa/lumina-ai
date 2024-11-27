@@ -50,9 +50,7 @@ export default function Home() {
         )}
       </AnimatePresence>
       <main className="relative ">
-        <div className="relative h-screen ">
-          <Section1 />
-        </div>
+        <Section1 />
 
         <Section3 />
       </main>

@@ -100,13 +100,13 @@ export default function Section3() {
                     transition: { duration: 0.3, ease: "easeInOut" },
                   }}
                   key={i}
-                  className=" flex flex-col lg:flex-row flex-wrap p-3 items-start rounded bg-white lg:gap-20 gap-3 cursor-pointer"
+                  className=" flex flex-col lg:flex-row flex-wrap lg:p-3 p-1 items-start rounded-lg bg-white lg:gap-20 gap-3 cursor-pointer"
                 >
                   <div className="flex flex-col text-sm text-zinc-800 ">
                     <p>CHAT {convo.date}</p>
                     <p>{convo.time}</p>
                   </div>
-                  <div className="text-lg font-circular-web text-zinc-800 ">
+                  <div className="lg:text-lg text-base font-circular-web text-zinc-800 ">
                     {convo.message}
                   </div>
                 </motion.div>
@@ -135,7 +135,13 @@ const ImageWrapper = ({ src }) => {
         willChange: "transform",
       }}
     >
-      <Image alt="" src={src} fill style={{ objectFit: "contain" }} />
+      <Image
+        alt=""
+        src={src}
+        fill
+        sizes="100"
+        style={{ objectFit: "contain" }}
+      />
     </div>
   );
 };

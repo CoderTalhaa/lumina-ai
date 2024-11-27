@@ -4,12 +4,12 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function Section1() {
   return (
-    <div className="relative h-screen container p-3">
+    <div className="relative min-h-svh container p-3">
       <div className="relative mt-20 bg-black">
         <DotLottieReact src="/img/faceLottie.lottie" loop autoplay />
       </div>
 
-      <div className="flex flex-col justify-center items-center p-1 gap-2 mt-10">
+      <div className="flex flex-col justify-center items-center p-1 gap-2 pt-20">
         <button className="bg-black text-white font-circular-web font-semibold px-4 py-2">
           <AnimatedLink title={"CHAT NOW"} />
         </button>
